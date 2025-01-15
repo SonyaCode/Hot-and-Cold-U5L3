@@ -221,6 +221,10 @@ function addPostToWeb(postBody, user, time) {
 
     let post = document.createElement("div")
     post.className = "post"
+
+    let profilePic = document.createElement("img")
+    profilePic.className = "profile-pic"
+    profilePic.src = "assets/images/defaultPic.jpg"
     
     let username = document.createElement("h3")
     username.textContent = user
@@ -232,6 +236,7 @@ function addPostToWeb(postBody, user, time) {
     timePosted.textContent = time
 
     postContainer.append(post)
+    post.append(profilePic)
     post.append(username)
     post.append(contentOfPost)
     post.append(timePosted)
@@ -258,21 +263,21 @@ window.onload = () => {
 //credit: coursera
 
 function ChangeAngry() {
-    document.getElementById("user-profile-picture").src = "assets/emojis/AngryEmoji.webp";
+    document.getElementById("user-profile-picture").src = "assets/images/angry-emoji.webp";
 }
  
  
 function ChangeGoofy() {
-    document.getElementById("user-profile-picture").src = "assets/emojis/GoofyEmoji.webp";
+    document.getElementById("user-profile-picture").src = "assets/images/goofy-emoji.webp";
 }
  
  
 function ChangeHappy() {
-    document.getElementById("user-profile-picture").src = "assets/emojis/HappyEmoji.png";
+    document.getElementById("user-profile-picture").src = "assets/emojis/happy-emoji.png";
 }
  
  
 function ChangeSad() {
-    document.getElementById("user-profile-picture").src = "assets/emojis/SadEmoji.png";
+    document.getElementById("user-profile-picture").src = "assets/emojis/sad-emoji.png";
 }
  

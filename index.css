@@ -328,6 +328,13 @@ textarea {
     padding: 5px;
     margin: 20px;
 }
+
+.profile-pic {
+    width: 3.75em;
+    height: 3.75em;
+    border-radius: 100%;
+    border: var(--border-width) solid var(--dark-color)
+}
  
 /* === IDs === */
 
@@ -382,6 +389,3 @@ textarea {
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
-
-
