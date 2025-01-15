@@ -235,11 +235,30 @@ function addPostToWeb(postBody, user, time) {
     let timePosted = document.createElement("p")
     timePosted.textContent = time
 
+    let icons = document.createElement("div")
+    icons.className = "icons"
+
+    let like = document.createElement("img")
+    like.id = "likeBtn"
+    like.src = "assets/icons/like.png"
+
+    let comment = document.createElement("img")
+    comment.id = "commentBtn"
+    comment.src = "assets/icons/comment.png"
+
+    let share = document.createElement("img")
+    share.id = "shareBtn"
+    share.src = "assets/icons/share.png"
+
     postContainer.append(post)
     post.append(profilePic)
     post.append(username)
     post.append(contentOfPost)
     post.append(timePosted)
+    post.append(icons)
+    icons.append(like)
+    icons.append(comment)
+    icons.append(share)
 }
 
 // Main Code
@@ -258,6 +277,14 @@ onAuthStateChanged(auth, (user) => {
 window.onload = () => {
     getAllPosts();
 };
+
+let like = document.getElementById("likeBtn")
+like.addEventListener("click", likePost)
+
+function likePost() {
+    console.log("LIKED")
+    like.src = "assets/icons/liked-post.png"
+}
 
 
 //credit: coursera
