@@ -237,9 +237,9 @@ async function getAllPosts() {
        console.log(snapshot)
        snapshot.docs.forEach((doc) => {
            const postData = doc.data();
-           console.log(`Post ID: ${doc.id}`)
-           console.log(`Body: ${postData.body}`)
-           console.log(`User: ${postData.uid}`)
+         //   console.log(`Post ID: ${doc.id}`)
+         //   console.log(`Body: ${postData.body}`)
+         //   console.log(`User: ${postData.uid}`)
            console.log(`Timestamp: ${new Date(postData.timestamp.seconds * 1000).toLocaleString()}`)
            const timePosted = new Date(postData.timestamp.seconds * 1000).toLocaleString();
 
@@ -253,7 +253,7 @@ async function getAllPosts() {
 }
 
 
- function addPostToWeb(postBody, user, time, profilePicSrc) {
+function addPostToWeb(postBody, user, time, profilePicSrc) {
    let postContainer = document.getElementById("post-container");
 
 
@@ -303,6 +303,18 @@ async function getAllPosts() {
    icons.append(like)
    icons.append(comment)
    icons.append(share)
+
+
+   let isLiked = false
+   like.addEventListener("click", function() {
+      isLiked = !isLiked
+
+      if (isLiked == true) {
+         like.src = "assets/icons/liked-post.png"
+      } else {
+         like.src = "assets/icons/like.png"
+      }
+   })
 }
 
 
