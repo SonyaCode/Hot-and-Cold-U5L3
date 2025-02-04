@@ -2,7 +2,7 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-app.js";
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, serverTimestamp, getDocs } from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js"
-
+import { onSnapshot} from "https://www.gstatic.com/firebasejs/11.1.0/firebase-firestore.js"
 
 /* === Firebase Setup === */
 const firebaseConfig = {
@@ -229,6 +229,18 @@ async function addPostToDB(postBody, user, time, profilePicSrc) {
 }
 console.log(app.options.projectId)
 
+function fetchInRealtimeAndRenderPostsFromDB() {
+   onSnapshot(collection(db, "posts"), (querySnapshot) => {
+      querySnapshot.forEach((doc) => {
+      // we are getting the posts in the console only for now
+      console.log(doc.data())
+      })
+   })
+}
+
+console.log(firebaseConfig.apiKey)
+
+
 
 async function getAllPosts() {
    try {
@@ -324,8 +336,10 @@ onAuthStateChanged(auth, (user) => {
        showLoggedInView()
        showProfilePicture(userProfilePictureEl, user)
        showUserGreeting(userGreetingEl, user)
+       fetchInRealtimeAndRenderPostsFromDB()
    } else {
        showLoggedOutView()
+       fetchInRealtimeAndRenderPostsFromDB()
    }
 })
 
